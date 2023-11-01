@@ -32,6 +32,9 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
+        if (isOpen)
+            return;
+
         isOpen = true;
         transform.position = currentPosition;
         currentPosition = pointToOpen.position;
@@ -44,6 +47,9 @@ public class Door : MonoBehaviour
 
     public void Close()
     {
+        if (!isOpen)
+            return;
+
         isOpen = false;
         transform.position = currentPosition;
         currentPosition = pointToClose.position;
