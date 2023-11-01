@@ -25,6 +25,7 @@ public class PlayerUnit : MonoBehaviour
     public void Death()
     {
         AddLife(-1);
+        GameManager.instance.ResetTimer();
         transform.position = CheckpointManager.instance.currentCheckpoint.transform.position;
     }
 }

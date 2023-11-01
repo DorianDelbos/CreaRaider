@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2181b7a49415a6e40907fdf920501cf0, type: 3}
+  m_Name: Key
+  m_EditorClassIdentifier: 
+  name: Orb
+  displayText: <color=blue>ORB</color>
+  description: It looks like some kind of blue key.
+  sprite: {fileID: 0}
+  itemGameObject: {fileID: 4698991171706993253, guid: 2baf83d0d47df2841a7d7f333ad331fb,
+    type: 3}

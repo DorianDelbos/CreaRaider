@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Gameobjects & Components")]
     private Rigidbody rb;
+    [SerializeField] private Transform[] foots;
 
     [Space, Header("Inputs")]
     [SerializeField] private InputActionReference movementInput;
@@ -19,10 +21,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float xMouseSensitivity;
     private Vector3 direction;
+    private LayerMask groundLayer;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        groundLayer = LayerMask.GetMask("Ground");
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -52,8 +57,23 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jumpInput.action.WasPressedThisFrame())
         {
-            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            if (CanJump())
+            {
+                rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+            }
         }
+    }
+
+    private bool CanJump()
+    {
+        foreach (var foot in foots)
+        {
+            if (Physics.OverlapSphere(foot.position, 0.1f, groundLayer).Count() > 0)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void FixedUpdate()

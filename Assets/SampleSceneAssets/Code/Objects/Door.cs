@@ -33,19 +33,25 @@ public class Door : MonoBehaviour
     public void Open()
     {
         isOpen = true;
+        transform.position = currentPosition;
         currentPosition = pointToOpen.position;
 
-        if (coroutine == null)
-            coroutine = StartCoroutine(LerpPosition());
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+
+        coroutine = StartCoroutine(LerpPosition());
     }
 
     public void Close()
     {
         isOpen = false;
+        transform.position = currentPosition;
         currentPosition = pointToClose.position;
 
-        if (coroutine == null)
-            coroutine = StartCoroutine(LerpPosition());
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+
+        coroutine = StartCoroutine(LerpPosition());
     }
 
     private IEnumerator LerpPosition()

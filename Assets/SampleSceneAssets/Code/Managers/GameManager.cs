@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     [Header("Gameobjects & Components")]
     [SerializeField] private TMP_Text timerTextMesh;
     private GameObject player;
+    [SerializeField] private GameObject popupArea;
+    [SerializeField] private GameObject popupPrefab;
 
     [Space, Header("Settings")]
     [SerializeField] private float duration;
@@ -15,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         player = GameObject.FindWithTag("Player");
     }
 
@@ -28,6 +34,13 @@ public class GameManager : MonoBehaviour
         UpdateTimer();
     }
 
+    public void AddPopup(string popupText)
+    {
+        GameObject popup = Instantiate(popupPrefab, popupArea.transform);
+        popup.transform.GetChild(0).GetComponent<TMP_Text>().text = popupText;
+        popupArea.GetComponent<VerticalLayoutGroup>().SetLayoutVertical();
+    }
+
     private void UpdateTimer()
     {
         currentTime = Mathf.Clamp(currentTime - Time.deltaTime, 0, duration);
@@ -36,7 +49,6 @@ public class GameManager : MonoBehaviour
         if (currentTime <= 0)
         {
             player.GetComponent<PlayerUnit>().Death();
-            ResetTimer();
         }
     }
 
