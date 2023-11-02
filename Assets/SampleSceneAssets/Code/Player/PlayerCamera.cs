@@ -25,6 +25,7 @@ public class PlayerCamera : MonoBehaviour
     private void Update()
     {
         Vector2 axis = cameraInput.action.ReadValue<Vector2>();
+        axis.y = -axis.y;
 
         // Horizontal
         nextRotation *= Quaternion.AngleAxis(axis.x * mouseSensitivity, Vector3.up);
