@@ -17,7 +17,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private InputActionReference openMenuInput;
 
     [Space, Header("Settings")]
-    private List<Collactable> inventory = new List<Collactable>();
+    private List<Item> inventory = new List<Item>();
 
     private void Update()
     {
@@ -25,6 +25,11 @@ public class PlayerInventory : MonoBehaviour
         {
             ToggleInventory();
         }
+    }
+
+    public bool IsContain(Item item)
+    {
+        return inventory.Contains(item);
     }
 
     public void ToggleInventory()
@@ -36,15 +41,23 @@ public class PlayerInventory : MonoBehaviour
         mapPanel.SetActive(!mapPanel.activeSelf);
     }
 
-    public void AddItem(Collactable item)
+    public void AddItem(Item item)
     {
         inventory.Add(item);
         
         GameObject newCase = Instantiate(inventoryCasePrefab, inventoryContain.transform);
-        newCase.transform.GetChild(0).GetComponent<Image>().sprite = item.itemScriptable.sprite;
-        newCase.transform.GetChild(1).GetComponent<TMP_Text>().text = item.itemScriptable.displayText;
-        newCase.transform.GetChild(2).GetComponent<TMP_Text>().text = item.itemScriptable.description;
+        newCase.transform.GetChild(0).GetComponent<Image>().sprite = item.sprite;
+        newCase.transform.GetChild(1).GetComponent<TMP_Text>().text = item.displayText;
+        newCase.transform.GetChild(2).GetComponent<TMP_Text>().text = item.description;
 
         inventoryContain.GetComponent<VerticalLayoutGroup>().SetLayoutVertical();
+    }
+
+    public void RemoveItem(Item item)
+    {
+        if (IsContain(item))
+        {
+            inventory.Remove(item);
+        }
     }
 }

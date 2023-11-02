@@ -15,7 +15,7 @@ public class Collactable : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerInventory>().AddItem(this);
+            other.GetComponent<PlayerInventory>().AddItem(itemScriptable);
             GameManager.instance.AddPopup("You pick up " + itemScriptable.displayText);
             Destroy(gameObject);
         }
