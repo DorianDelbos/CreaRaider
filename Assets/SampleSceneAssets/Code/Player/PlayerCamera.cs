@@ -8,6 +8,7 @@ public class PlayerCamera : MonoBehaviour
 {
     [Header("Gameobjects & Components")]
     [SerializeField] private Transform followTransform;
+    private PlayerUnit playerUnit;
 
     [Space, Header("Inputs")]
     [SerializeField] private InputActionReference cameraInput;
@@ -20,9 +21,22 @@ public class PlayerCamera : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        playerUnit = GetComponent<PlayerUnit>();
     }
 
     private void Update()
+    {
+        switch (playerUnit.cameraView)
+        {
+            case PlayerUnit.View.Normal:
+                thirdPersonCameraUpdate();
+                break;
+            default: 
+                break;
+        }
+    }
+
+    public void thirdPersonCameraUpdate()
     {
         Vector2 axis = cameraInput.action.ReadValue<Vector2>();
         axis.y = -axis.y;

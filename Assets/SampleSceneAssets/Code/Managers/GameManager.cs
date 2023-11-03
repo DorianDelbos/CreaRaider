@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            player.GetComponent<PlayerUnit>().Death();
+            GameOver();
         }
     }
 
@@ -65,5 +66,23 @@ public class GameManager : MonoBehaviour
         string formattedTime = $"{minutes:D2}:{remainingSeconds:D2}";
 
         return formattedTime;
+    }
+
+    public void TeleportPlayer(Transform toTeleport)
+    {
+        player.GetComponent<Rigidbody>().position = toTeleport.position;
+        player.GetComponent<Rigidbody>().rotation = toTeleport.rotation;
+        //player.transform.position = toTeleport.position;
+        //player.transform.rotation = toTeleport.rotation;
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("DebugScene");
+    }
+
+    public void Win()
+    {
+        SceneManager.LoadScene("DebugScene");
     }
 }

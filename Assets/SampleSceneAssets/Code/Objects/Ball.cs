@@ -25,12 +25,13 @@ public class Ball : MonoBehaviour
 
     public void StartMoving()
     {
-        isMoving = true;
         ResetBall();
+        isMoving = true;
     }
 
     public void ResetBall()
     {
+        rb.velocity = Vector3.zero;
         transform.position = startPos;
     }
 

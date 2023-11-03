@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Gameobjects & Components")]
     private Rigidbody rb;
     [SerializeField] private Transform[] foots;
+    private PlayerUnit playerUnit;
 
     [Space, Header("Inputs")]
     [SerializeField] private InputActionReference movementInput;
@@ -24,13 +25,35 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerUnit = GetComponent<PlayerUnit>();
         groundLayer = LayerMask.GetMask("Ground");
     }
 
     private void Update()
     {
-        MovementUpdate();
-        JumpUpdate();
+        switch (playerUnit.cameraView)
+        {
+            case PlayerUnit.View.Normal:
+                MovementUpdate();
+                JumpUpdate();
+                break;
+            case PlayerUnit.View.Ball:
+                MovementForwardUpdate();
+                break;
+            case PlayerUnit.View.CantMove:
+                direction = new Vector3(0, rb.velocity.y, 0);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void MovementForwardUpdate()
+    {
+        Vector2 movement = movementInput.action.ReadValue<Vector2>();
+        direction = transform.forward * movement.y + transform.right * movement.x;
+        direction = direction.normalized * speedMovement;
+        direction.y = rb.velocity.y;
     }
 
     private void MovementUpdate()
