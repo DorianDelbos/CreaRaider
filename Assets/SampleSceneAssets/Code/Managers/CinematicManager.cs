@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CinematicManager : MonoBehaviour
 {
+    [SerializeField] private float timeToWait = 2f;
     private Coroutine coroutine;
 
     public void SetTemporyCameraCinematic(CinemachineVirtualCamera virtualCamera)
@@ -19,7 +20,7 @@ public class CinematicManager : MonoBehaviour
     {
         virtualCamera.Priority = 20;
 
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(timeToWait);
 
         virtualCamera.Priority = 0;
 

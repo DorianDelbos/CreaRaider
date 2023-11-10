@@ -11,7 +11,7 @@ public class PlayerCamera : MonoBehaviour
     private PlayerUnit playerUnit;
 
     [Space, Header("Inputs")]
-    [SerializeField] private InputActionReference cameraInput;
+    [SerializeField] private InputActionReference cameraMovementInput;
 
     [Space, Header("Settings")]
     [SerializeField] private float mouseSensitivity;
@@ -38,14 +38,13 @@ public class PlayerCamera : MonoBehaviour
 
     public void thirdPersonCameraUpdate()
     {
-        Vector2 axis = cameraInput.action.ReadValue<Vector2>();
-        axis.y = -axis.y;
+        Vector2 axis = cameraMovementInput.action.ReadValue<Vector2>();
 
         // Horizontal
         nextRotation *= Quaternion.AngleAxis(axis.x * mouseSensitivity, Vector3.up);
 
         // Vertical
-        nextRotation *= Quaternion.AngleAxis(axis.y * mouseSensitivity, Vector3.right);
+        nextRotation *= Quaternion.AngleAxis(-axis.y * mouseSensitivity, Vector3.right);
 
         Vector3 angles = nextRotation.eulerAngles;
         angles.z = 0;

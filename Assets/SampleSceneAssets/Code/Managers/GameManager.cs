@@ -72,17 +72,15 @@ public class GameManager : MonoBehaviour
     {
         player.GetComponent<Rigidbody>().position = toTeleport.position;
         player.GetComponent<Rigidbody>().rotation = toTeleport.rotation;
-        //player.transform.position = toTeleport.position;
-        //player.transform.rotation = toTeleport.rotation;
     }
 
     public void GameOver()
     {
-        SceneManager.LoadScene("DebugScene");
+        SceneManager.LoadScene("InGame");
     }
 
     public void Win()
     {
-        SceneManager.LoadScene("DebugScene");
+        SceneManager.LoadScene("InGame");
     }
 }
