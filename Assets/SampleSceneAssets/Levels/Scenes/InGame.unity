@@ -45903,10 +45903,9 @@ PrefabInstance:
       objectReference: {fileID: 1709469036}
     - target: {fileID: 9002338293161693246, guid: 7ed8a94ac29917a45882143a20a9cf5c,
         type: 3}
-      propertyPath: cameraMovementInput
-      value: 
-      objectReference: {fileID: -5221055753130335486, guid: 8cdc030ec9ed0a945b15756d9f05a7ca,
-        type: 3}
+      propertyPath: mouseSensitivity
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

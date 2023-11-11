@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3140091800683642315}
   - component: {fileID: 6132129944730507428}
   - component: {fileID: 9002338293161693246}
+  - component: {fileID: 7093516430359104427}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -210,8 +211,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTransform: {fileID: 135886306871144066}
-  mouseSensitivity: 0.1
+  cameraMovementInput: {fileID: -5221055753130335486, guid: 8cdc030ec9ed0a945b15756d9f05a7ca,
+    type: 3}
+  mouseSensitivity: 1
   rotationLerp: 20
+--- !u!114 &7093516430359104427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3371599722717053584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c7b424a3486524fa315ed86d3b87a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3749747422655350333
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +568,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 3e81fe84e18e31a41bbae21e35d45593,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 02ecade8d7e0aa247ac6ce9f098abfc9, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 3e81fe84e18e31a41bbae21e35d45593,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

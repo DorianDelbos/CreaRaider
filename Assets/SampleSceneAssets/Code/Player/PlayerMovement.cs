@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Gameobjects & Components")]
     private Rigidbody rb;
+    private PlayerAnimation playerAnimation;
     [SerializeField] private Transform[] foots;
     private PlayerUnit playerUnit;
 
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerUnit = GetComponent<PlayerUnit>();
+        playerAnimation = GetComponent<PlayerAnimation>();
         groundLayer = LayerMask.GetMask("Ground");
     }
 
@@ -71,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
             if (CanJump())
             {
                 rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+                playerAnimation.TriggerAnimator("Jump");
             }
         }
     }
