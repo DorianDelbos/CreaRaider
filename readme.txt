@@ -3,6 +3,7 @@ Crearaider par DELBOS Dorian
 Touches :
 - Mouvement : ZQSD
 - Jump : space
+- Interact : E
 - Map : Tab
 
 Comportements :
