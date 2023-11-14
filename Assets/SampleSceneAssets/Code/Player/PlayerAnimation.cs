@@ -16,7 +16,8 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat("Speed", rb.velocity.magnitude);
+        float speed = Mathf.Abs(rb.velocity.x) + Mathf.Abs(rb.velocity.z);
+        animator.SetFloat("Speed", speed);
     }
 
     public void TriggerAnimator(string toTrigger)

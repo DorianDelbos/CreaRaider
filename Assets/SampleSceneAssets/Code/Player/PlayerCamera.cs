@@ -67,7 +67,7 @@ public class PlayerCamera : MonoBehaviour
         followTransform.localRotation = Quaternion.Euler(curRotationFollow.eulerAngles.x, 0, 0);
 
         Quaternion curRotation = Quaternion.Lerp(transform.rotation, nextRotation, Time.deltaTime * rotationLerp);
-        transform.localRotation = Quaternion.Euler(0, curRotationFollow.eulerAngles.y, 0);
+        transform.localRotation = Quaternion.Euler(0, curRotation.eulerAngles.y, 0);
     }
 
     public void ChangeCamera(CinemachineVirtualCamera camera)
