@@ -1,7 +1,7 @@
-Crearaider par DELBOS Dorian
+CreaRaider par DELBOS Dorian
 
 Touches :
-- Mouvement : ZQSD
+- Movement : ZQSD
 - Jump : space
 - Interact : E
 - Map : Tab
