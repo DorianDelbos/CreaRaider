@@ -1,11 +1,15 @@
-CreaRaider par DELBOS Dorian
+CreaRaider is a student game made in 4 days on Unity.
 
-Touches :
-- Movement : ZQSD
+-------------------------------------------------------
+
+CreaRaider by DELBOS Dorian
+
+Keys :
+- Movement: ZQSD
 - Jump : space
 - Interact : E
 - Map : Tab
 
-Comportements :
-- en cas de game over, la scene ce reset
-- en cas de victoire (après la dernière scène très reconnaissable que je ne vais pas spoil), la scene ce reset
+Behaviors:
+- in case of game over, scene ce reset
+- in case of victory (after the very recognizable last scene, which I won't spoil), scene ce reset
