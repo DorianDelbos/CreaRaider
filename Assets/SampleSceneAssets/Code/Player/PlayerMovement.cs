@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (var foot in foots)
         {
-            if (Physics.OverlapSphere(foot.position, 0.1f, groundLayer).Count() > 0)
+            if (Physics.OverlapSphere(foot.position, 0.2f, groundLayer).Count() > 0)
             {
                 return true;
             }
